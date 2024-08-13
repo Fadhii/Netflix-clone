@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './Banner.css'
 import axios from '../../axios'
-import { API_KEY,imageUrl } from '../../constants/constants'
+import { API_KEY,imageUrl } from '../../utils/constants'
+import {FaPlay} from 'react-icons/fa'
 
 function Banner() {
     const [movie, setMovie] = useState();
@@ -24,8 +25,8 @@ function Banner() {
     <div className='banner' style={{backgroundImage:`url(${movie ? imageUrl+movie.backdrop_path : ""})`    }}>
        <div className='content'>
         <h1 className='title'>{movie ? (movie.title || movie.name ) : " "} </h1>
-        <div className='banner_button'>
-            <button className='button'>Play</button>
+        <div className='flex banner_button'>
+            <button className='flex items-center button'><FaPlay/><span>Play</span></button>
             <button className='button'>My List</button>
         </div>
         <h1 className='description'>{movie ? movie.overview : " " }</h1>
